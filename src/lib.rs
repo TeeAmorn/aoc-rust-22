@@ -86,6 +86,7 @@ fn get_solver(args: &Args) -> Result<fn(&Vec<String>) -> String, &'static str> {
     let id = format!("{:02}", args.day) + format!("{:02}", args.part).as_str();
     match id.as_str() {
         "0101" => Ok(crate::day01::part1::solve),
+        "0102" => Ok(crate::day01::part2::solve),
         _ => Err("Cannot find method"),
     }
 }
