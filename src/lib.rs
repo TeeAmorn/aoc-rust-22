@@ -2,6 +2,7 @@ use std::fs;
 use std::time;
 
 mod day01;
+mod day02;
 
 #[derive(Debug)]
 pub struct Args {
@@ -72,6 +73,7 @@ pub fn solve(args: &Args, input: &Vec<String>) -> Result<Output, &'static str> {
     let start = time::SystemTime::now();
 
     let output = get_solver(&args)?(input);
+
     if let Ok(elapsed) = start.elapsed() {
         Ok(Output {
             time: elapsed.as_millis(),
@@ -87,6 +89,7 @@ fn get_solver(args: &Args) -> Result<fn(&Vec<String>) -> String, &'static str> {
     match id.as_str() {
         "0101" => Ok(crate::day01::part1::solve),
         "0102" => Ok(crate::day01::part2::solve),
+        "0201" => Ok(crate::day02::part1::solve),
         _ => Err("Cannot find method"),
     }
 }
