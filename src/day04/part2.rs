@@ -17,7 +17,8 @@ pub fn solve(input: &Vec<String>) -> String {
             first
         })
         .fold(0_u32, |mut acc: u32, range| {
-            acc += (((range[0] <= range[3]) && (range[1] >= range[2])) || ((range[3] <= range[0]) && (range[2] >= range[1]))) as u32;
+            acc += (((range[0] <= range[3]) && (range[1] >= range[2]))
+                || ((range[3] <= range[0]) && (range[2] >= range[1]))) as u32;
             acc
         })
         .to_string()
