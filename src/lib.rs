@@ -6,6 +6,7 @@ use std::time;
 mod day01;
 mod day02;
 mod day03;
+mod day04;
 
 #[derive(Debug)]
 pub struct Args {
@@ -96,6 +97,7 @@ fn get_solver(args: &Args) -> Result<fn(&Vec<String>) -> String, &'static str> {
         "0202" => Ok(crate::day02::part2::solve),
         "0301" => Ok(crate::day03::part1::solve),
         "0302" => Ok(crate::day03::part2::solve),
+        "0401" => Ok(crate::day04::part1::solve),
         _ => Err("Cannot find method"),
     }
 }
