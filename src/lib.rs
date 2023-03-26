@@ -7,6 +7,7 @@ mod day01;
 mod day02;
 mod day03;
 mod day04;
+mod day05;
 
 #[derive(Debug)]
 pub struct Args {
@@ -60,7 +61,7 @@ pub fn parse_input(args: &Args) -> Result<Vec<String>, String> {
     if let Ok(input) = contents {
         Ok(input
             .lines()
-            .map(|line| String::from(line.trim()))
+            .map(|line| String::from(line))
             .collect())
     } else {
         Err(format!("Cannot parse input file at {}", &file_path))
@@ -99,6 +100,7 @@ fn get_solver(args: &Args) -> Result<fn(&Vec<String>) -> String, &'static str> {
         "0302" => Ok(crate::day03::part2::solve),
         "0401" => Ok(crate::day04::part1::solve),
         "0402" => Ok(crate::day04::part2::solve),
+        "0501" => Ok(crate::day05::part1::solve),
         _ => Err("Cannot find method"),
     }
 }
