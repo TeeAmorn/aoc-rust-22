@@ -101,6 +101,7 @@ fn get_solver(args: &Args) -> Result<fn(&Vec<String>) -> String, &'static str> {
         "0501" => Ok(crate::day05::part1::solve),
         "0502" => Ok(crate::day05::part2::solve),
         "0601" => Ok(crate::day06::part1::solve),
+        "0602" => Ok(crate::day06::part2::solve),
         _ => Err("Cannot find method"),
     }
 }
