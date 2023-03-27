@@ -59,10 +59,7 @@ pub fn parse_input(args: &Args) -> Result<Vec<String>, String> {
     let contents = fs::read_to_string(&file_path);
 
     if let Ok(input) = contents {
-        Ok(input
-            .lines()
-            .map(|line| String::from(line))
-            .collect())
+        Ok(input.lines().map(|line| String::from(line)).collect())
     } else {
         Err(format!("Cannot parse input file at {}", &file_path))
     }

@@ -37,9 +37,11 @@ pub fn solve(input: &Vec<String>) -> String {
         let amount = tokens[1].parse::<usize>().unwrap();
         let src = tokens[3].parse::<usize>().unwrap() - 1;
         let dst = tokens[5].parse::<usize>().unwrap() - 1;
-        
+
         let src_size = stacks[src].len();
-        let to_move = stacks[src].drain((src_size - amount)..src_size).collect::<Vec<_>>();
+        let to_move = stacks[src]
+            .drain((src_size - amount)..src_size)
+            .collect::<Vec<_>>();
         for item in to_move.into_iter() {
             stacks[dst].push(item);
         }
