@@ -78,9 +78,6 @@ pub fn solve(input: &Vec<String>) -> String {
     let mut size: u32 = 0;
     get_size(&root, &mut size);
     size.to_string()
-
-    // println!("{:?}", root);
-    // "".to_string()
 }
 
 fn compute_directory_sizes(node: &Rc<RefCell<TreeNode>>) {
