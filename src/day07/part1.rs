@@ -91,7 +91,6 @@ fn compute_directory_sizes(node: &Rc<RefCell<TreeNode>>) {
     node.borrow_mut().size = size;
 }
 
-
 fn get_size(node: &Rc<RefCell<TreeNode>>, size: &mut u32) {
     for (_, child) in &node.borrow().children {
         if child.borrow().children.len() != 0 {
