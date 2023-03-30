@@ -58,6 +58,7 @@ impl Args {
 
 pub fn parse_input(args: &Args) -> Result<Vec<String>, String> {
     let file_path = format!("src/day{:02}/input.txt", args.day);
+    println!("{}", file_path);
     let contents = fs::read_to_string(&file_path);
 
     if let Ok(input) = contents {
