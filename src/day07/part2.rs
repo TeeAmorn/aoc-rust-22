@@ -56,7 +56,11 @@ pub fn solve(input: &Vec<String>) -> String {
                 let parent_path = path.join("/");
                 path.push(tokens[1]);
                 let child_path = path.join("/");
-                nodes.get_mut(&parent_path).unwrap().children.push(child_path.clone());
+                nodes
+                    .get_mut(&parent_path)
+                    .unwrap()
+                    .children
+                    .push(child_path.clone());
                 nodes.insert(child_path, node);
                 path.pop();
 
@@ -71,12 +75,20 @@ pub fn solve(input: &Vec<String>) -> String {
 
     // Get smallest size of directory to remove
     let threshold = 30_000_000 - (70_000_000 - sizes.get(&"".to_string()).unwrap());
-    let mut dir_sizes_to_remove = sizes.values().filter(|size| **size > threshold).clone().collect::<Vec<_>>();
+    let mut dir_sizes_to_remove = sizes
+        .values()
+        .filter(|size| **size > threshold)
+        .clone()
+        .collect::<Vec<_>>();
     dir_sizes_to_remove.sort();
     dir_sizes_to_remove[0].to_string()
 }
 
-fn compute_dir_sizes(path: &String, nodes: &HashMap<String, Node>, sizes: &mut HashMap<String, u32>) {
+fn compute_dir_sizes(
+    path: &String,
+    nodes: &HashMap<String, Node>,
+    sizes: &mut HashMap<String, u32>,
+) {
     let mut size: u32 = 0;
     for child in nodes.get(path).unwrap().children.iter() {
         let child_node = nodes.get(child).unwrap();

@@ -56,7 +56,11 @@ pub fn solve(input: &Vec<String>) -> String {
                 let parent_path = path.join("/");
                 path.push(tokens[1]);
                 let child_path = path.join("/");
-                nodes.get_mut(&parent_path).unwrap().children.push(child_path.clone());
+                nodes
+                    .get_mut(&parent_path)
+                    .unwrap()
+                    .children
+                    .push(child_path.clone());
                 nodes.insert(child_path, node);
                 path.pop();
 
@@ -69,10 +73,18 @@ pub fn solve(input: &Vec<String>) -> String {
     let mut sizes: HashMap<String, u32> = HashMap::new();
     compute_dir_sizes(&"".to_string(), &nodes, &mut sizes);
 
-    sizes.values().filter(|size| **size < 100000).sum::<u32>().to_string()
+    sizes
+        .values()
+        .filter(|size| **size < 100000)
+        .sum::<u32>()
+        .to_string()
 }
 
-fn compute_dir_sizes(path: &String, nodes: &HashMap<String, Node>, sizes: &mut HashMap<String, u32>) {
+fn compute_dir_sizes(
+    path: &String,
+    nodes: &HashMap<String, Node>,
+    sizes: &mut HashMap<String, u32>,
+) {
     let mut size: u32 = 0;
     for child in nodes.get(path).unwrap().children.iter() {
         let child_node = nodes.get(child).unwrap();
