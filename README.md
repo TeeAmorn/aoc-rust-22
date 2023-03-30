@@ -7,6 +7,8 @@ Because the implementations use nightly-only experimental features, first set th
 cargo default nightly
 ```
 
+**Only run the solutions from the project *root* directory**.
+
 To run solutions, do
 ```
 cargo run -- <day> <part>
