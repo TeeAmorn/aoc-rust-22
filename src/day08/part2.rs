@@ -46,11 +46,15 @@ pub fn solve(input: &Vec<String>) -> String {
     // Iterator for scanning vertically
     let input_iter = input
         .iter()
-        .map(|line| line.chars().map(|letter| letter.to_digit(10).unwrap() as i8))
+        .map(|line| {
+            line.chars()
+                .map(|letter| letter.to_digit(10).unwrap() as i8)
+        })
         .flatten();
 
     // From top to bottom
-    let top_to_bottom_iter = (0..rows).map(|row_idx| input_iter.clone().skip(row_idx).step_by(columns));
+    let top_to_bottom_iter =
+        (0..rows).map(|row_idx| input_iter.clone().skip(row_idx).step_by(columns));
     for (i, row) in top_to_bottom_iter.enumerate() {
         let mut trees: Vec<(usize, u32)> = vec![];
         for (j, height) in row.enumerate() {
@@ -71,7 +75,8 @@ pub fn solve(input: &Vec<String>) -> String {
     }
 
     // From bottom to top
-    let bottom_to_top_iter = (0..rows).map(|row_idx| input_iter.clone().rev().skip(row_idx).step_by(columns));
+    let bottom_to_top_iter =
+        (0..rows).map(|row_idx| input_iter.clone().rev().skip(row_idx).step_by(columns));
     for (i, row) in bottom_to_top_iter.enumerate() {
         let mut trees: Vec<(usize, u32)> = vec![];
         for (j, height) in row.enumerate() {
@@ -82,7 +87,8 @@ pub fn solve(input: &Vec<String>) -> String {
             }
 
             if trees.len() > 0 {
-                result[rows - 1 - j][columns - 1 - i] *= (j as u32) - (trees[trees.len() - 1].0 as u32);
+                result[rows - 1 - j][columns - 1 - i] *=
+                    (j as u32) - (trees[trees.len() - 1].0 as u32);
             } else {
                 result[rows - 1 - j][columns - 1 - i] *= j as u32;
             }
