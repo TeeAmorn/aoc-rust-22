@@ -4,7 +4,8 @@
 
 Because the implementations use nightly-only experimental features, first set the channel to ``nightly``:
 ```
-cargo default nightly
+rustup toolchain install nightly
+rustup default nightly
 ```
 
 **Only run the solutions from the project *root* directory**.
