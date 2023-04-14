@@ -39,13 +39,12 @@ pub fn solve(input: &Vec<String>) -> String {
 fn find_tail_position(head: &mut [i64], tail: &mut [i64]) {
     let x_diff = head[0] - tail[0];
     let y_diff = head[1] - tail[1];
-    if !((x_diff.abs() <= 1) && (y_diff.abs() <= 1)) {
-        if x_diff.abs() > y_diff.abs() {
-            tail[0] = head[0] - x_diff.signum();
-            tail[1] = head[1];
-        } else {
-            tail[0] = head[0];
-            tail[1] = head[1] - y_diff.signum();
-        }
+    if x_diff == 0 && y_diff.abs() > 1 {
+        tail[1] += y_diff.signum();
+    } else if x_diff.abs() > 1 && y_diff.abs() == 0 {
+        tail[0] += x_diff.signum();
+    } else if (x_diff.abs() > 1) || (y_diff.abs() > 1) {
+        tail[0] += x_diff.signum();
+        tail[1] += y_diff.signum();
     }
 }
