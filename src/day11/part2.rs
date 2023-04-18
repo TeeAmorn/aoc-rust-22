@@ -72,8 +72,8 @@ pub fn solve(input: &Vec<String>) -> String {
 
     println!("{gcd}");
 
-    let mut counters  = vec![0u64; monkeys.len()];
-    
+    let mut counters = vec![0u64; monkeys.len()];
+
     for _ in 0..10000 {
         for i in 0..monkeys.len() {
             counters[i] += monkeys[i].new_items.len() as u64;

@@ -65,8 +65,8 @@ pub fn solve(input: &Vec<String>) -> String {
         input_iter.next();
     }
 
-    let mut counters  = vec![0u32; monkeys.len()];
-    
+    let mut counters = vec![0u32; monkeys.len()];
+
     for _ in 0..20 {
         for i in 0..monkeys.len() {
             counters[i] += monkeys[i].new_items.len() as u32;
