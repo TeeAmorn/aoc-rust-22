@@ -1,13 +1,14 @@
-use std::collections::{HashMap, BinaryHeap, HashSet};
+use std::collections::{BinaryHeap, HashMap, HashSet};
 
 pub fn solve(input: &Vec<String>) -> String {
     let rows = input.len();
     let cols = input[0].len();
 
     // Convert input to 2D array of chars
-    let char_map = input.iter().map(|line| {
-        line.chars().collect::<Vec<_>>()
-    }).collect::<Vec<_>>();
+    let char_map = input
+        .iter()
+        .map(|line| line.chars().collect::<Vec<_>>())
+        .collect::<Vec<_>>();
 
     // Convert array of chars to integers
     let mut graph = HashMap::new();
@@ -26,9 +27,7 @@ pub fn solve(input: &Vec<String>) -> String {
                     end = (i, j);
                     25
                 }
-                _ => {
-                    c as i8 - 97
-                }
+                _ => c as i8 - 97,
             };
             graph.insert((i, j), vec![]);
         }
@@ -57,11 +56,15 @@ pub fn solve(input: &Vec<String>) -> String {
     for src in start {
         answer = std::cmp::min(answer, get_shortest(&graph, src, end));
     }
-    
+
     answer.to_string()
 }
 
-fn get_shortest(graph: &HashMap<(usize, usize), Vec<(usize, usize)>>, src: (usize, usize), dst: (usize, usize)) -> i32 {
+fn get_shortest(
+    graph: &HashMap<(usize, usize), Vec<(usize, usize)>>,
+    src: (usize, usize),
+    dst: (usize, usize),
+) -> i32 {
     let mut dist = HashMap::new();
     let mut to_do = BinaryHeap::new();
     let mut done = HashSet::new();
