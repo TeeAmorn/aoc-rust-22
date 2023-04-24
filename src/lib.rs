@@ -15,6 +15,7 @@ mod day09;
 mod day10;
 mod day11;
 mod day12;
+mod day13;
 
 #[derive(Debug)]
 pub struct Args {
@@ -121,6 +122,7 @@ fn get_solver(args: &Args) -> Result<fn(&Vec<String>) -> String, &'static str> {
         "1102" => Ok(crate::day11::part2::solve),
         "1201" => Ok(crate::day12::part1::solve),
         "1202" => Ok(crate::day12::part2::solve),
+        "1301" => Ok(crate::day13::part1::solve),
         _ => Err("Cannot find method"),
     }
 }
