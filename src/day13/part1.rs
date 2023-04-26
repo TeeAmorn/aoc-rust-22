@@ -12,11 +12,7 @@ pub fn solve(input: &Vec<String>) -> String {
         let mut right_iter = lines[1].chars();
         right_iter.next();
         let right = parse(&mut right_iter);
-        println!("{counter}");
-        println!("{:?}", left);
-        println!("{:?}", right);
         if let PacketCmp::Less = compare(&left, &right) {
-            println!("Right: {}", counter);
             answer += counter;
         }
     }
